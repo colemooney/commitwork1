@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/commitwork', {useNewUrlParser: true})
+  .connect('mongodb://localhost/rick-database', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -47,12 +47,15 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Rick Owens Database';
 
 
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const database = require('./routes/database');
+app.use('/', database);
 
 
 module.exports = app;
